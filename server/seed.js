@@ -1,5 +1,6 @@
 import { db } from './db.js';
 import bcrypt from 'bcryptjs';
+if (process.env.NODE_ENV === 'production') throw new Error('Seed de demonstração desabilitado em produção');
 const hash = await bcrypt.hash('demo12345', 12);
 for (const [name,email,role] of [['Ana Solicitante','solicitante@demo.local','solicitante'],['Bruno Comprador','comprador@demo.local','comprador'],['Carla Aprovadora','aprovador@demo.local','aprovador']]) await db.execute('INSERT INTO users (name,email,password_hash,role) VALUES (?,?,?,?) ON DUPLICATE KEY UPDATE name=VALUES(name), password_hash=VALUES(password_hash), role=VALUES(role)',[name,email,hash,role]);
 const [existing] = await db.query('SELECT COUNT(*) AS total FROM suppliers');

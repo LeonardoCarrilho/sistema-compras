@@ -6,23 +6,35 @@
     "dev": "concurrently \"node --watch server/index.js\" \"vite --host 127.0.0.1\"",
     "build": "vite build",
     "test": "node --test server/*.test.js",
-    "start": "node server/index.js",
+    "start": "node --import ./server/instrumentation.js server/index.js",
     "seed": "node server/seed.js",
-    "test:integration": "node scripts/integration.mjs"
+    "test:integration": "node scripts/integration.mjs",
+    "lint": "biome lint --only=correctness/noUnreachable server web scripts",
+    "test:e2e": "node tests/browser.mjs",
+    "test:coverage": "node --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=coverage.lcov server/*.test.js"
   },
   "dependencies": {
+    "@opentelemetry/api": "^1.10.0",
+    "@opentelemetry/auto-instrumentations-node": "^0.83.0",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.301.0",
+    "@opentelemetry/sdk-node": "^0.301.0",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.7",
     "dotenv": "^16.4.5",
     "express": "^4.21.2",
+    "express-rate-limit": "^8.7.3",
+    "helmet": "^8.3.0",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.12.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.4",
+    "@biomejs/biome": "^2.6.6",
+    "@playwright/test": "^1.65.0",
+    "@vitejs/plugin-react": "^6.2.1",
     "concurrently": "^9.1.2",
-    "vite": "^5.4.14"
+    "vite": "^8.3.6"
   }
 }
