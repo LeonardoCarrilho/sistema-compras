@@ -1,0 +1,257 @@
+{
+  "status": "open",
+  "round": 3,
+  "max": 3,
+  "open": [
+    {
+      "check": "hero-screen",
+      "where": "div#root > div.login > main.login-panel > div.card \"◈ FLUXO DE COMPRASEntrar no FluxoOrganiz\"",
+      "msg": "the hero ends at 737px on a 900px screen, 163px above the fold: it ends at the fold, 1px either way (SR-1)",
+      "fix": "make the hero exactly one screen (height: 100svh, its content fitted inside), never taller or shorter",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "hero-screen"
+      ],
+      "wheres": [
+        "div#root > div.login > main.login-panel > div.card \"◈ FLUXO DE COMPRASEntrar no FluxoOrganiz\""
+      ]
+    },
+    {
+      "check": "hero-screen",
+      "where": "div#root > div.login > section.login-story > footer \"Área de trabalho da equipe de compras\"",
+      "msg": "102px of the next section shows on the first screen (from 798px on a 900px screen): nothing below the hero shows at load (SR-1)",
+      "fix": "end the hero at the fold so nothing of the next section shows at load (hero height: 100svh)",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "hero-screen"
+      ],
+      "wheres": [
+        "div#root > div.login > section.login-story > footer \"Área de trabalho da equipe de compras\""
+      ]
+    },
+    {
+      "check": "section-height",
+      "where": "div#root > div.login > section.login-story > footer \"Área de trabalho da equipe de compras\"",
+      "msg": "the section is 16px tall (0 screens), 884px short of one screen (900px): every section after the hero is one screen or two, 2px either way (SR-2)",
+      "fix": "set the section to one screen or two (height: calc(var(--h,1) * 100vh), --h 1 or 2) and cut or split its content to fit",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "section-height"
+      ],
+      "wheres": [
+        "div#root > div.login > section.login-story > footer \"Área de trabalho da equipe de compras\"",
+        "div#root > div.login > main.login-panel > div.card \"◈ FLUXO DE COMPRASEntrar no FluxoOrganiz\""
+      ]
+    },
+    {
+      "check": "one-section",
+      "where": "div#root > div.login > main.login-panel > div.card \"◈ FLUXO DE COMPRASEntrar no FluxoOrganiz\"",
+      "msg": "a <div> sits directly in <main>: every part of <main> is a <section> (SR-4)",
+      "fix": "put every block of <main> in a <section>, and give a band its own section instead of a ground inside one",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "one-section"
+      ],
+      "wheres": [
+        "div#root > div.login > main.login-panel > div.card \"◈ FLUXO DE COMPRASEntrar no FluxoOrganiz\""
+      ]
+    },
+    {
+      "check": "one-section",
+      "where": "div.login > main.login-panel > div.card > div.hint \"Ambiente de demonstraçãosolicitante@demo\"",
+      "msg": "a band: a box 100% of the section wide on a ground of its own that holds only text: the section's own ground is the band (SR-4)",
+      "fix": "put every block of <main> in a <section>, and give a band its own section instead of a ground inside one",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "one-section"
+      ],
+      "wheres": [
+        "div.login > main.login-panel > div.card > div.hint \"Ambiente de demonstraçãosolicitante@demo\""
+      ]
+    },
+    {
+      "check": "container-edges",
+      "where": "div#root > div.login > main.login-panel > div.card \"◈ FLUXO DE COMPRASEntrar no FluxoOrganiz\"",
+      "msg": "the section needs exactly one in-flow child .wrap (it has 5 in-flow children, 0 .wrap) (SR-6)",
+      "fix": "build the page as header.nav, a main of sections (each one in-flow .wrap plus background layers) and footer.closing",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "container-edges"
+      ],
+      "wheres": [
+        "div#root > div.login > main.login-panel > div.card \"◈ FLUXO DE COMPRASEntrar no FluxoOrganiz\""
+      ]
+    },
+    {
+      "check": "container-edges",
+      "where": "div#root > div.login > section.login-story > footer \"Área de trabalho da equipe de compras\"",
+      "msg": "the section needs exactly one in-flow child .wrap (it has 0 in-flow children, 0 .wrap) (SR-6)",
+      "fix": "build the page as header.nav, a main of sections (each one in-flow .wrap plus background layers) and footer.closing",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "container-edges"
+      ],
+      "wheres": [
+        "div#root > div.login > section.login-story > footer \"Área de trabalho da equipe de compras\""
+      ]
+    },
+    {
+      "check": "container-edges",
+      "where": "div.login > main.login-panel > div.card > div.hint \"Ambiente de demonstraçãosolicitante@demo\"",
+      "msg": "1 text block starts on a left line at x 881, 881px from the container's left: text starts on the container's left, or on one split line (x 610, 732, 854) (SR-6)",
+      "fix": "start the text on the container's left, or on the one split line every split shares",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "container-edges"
+      ],
+      "wheres": [
+        "div.login > main.login-panel > div.card > div.hint \"Ambiente de demonstraçãosolicitante@demo\""
+      ]
+    },
+    {
+      "check": "container-edges",
+      "where": "div.login > main.login-panel > div.card > div.brand \"◈ FLUXO DE COMPRAS\"",
+      "msg": "5 text blocks start on a left line at x 860, 860px from the container's left: text starts on the container's left, or on one split line (x 610, 732, 854) (also \"Entrar no Fluxo\", \"Organize solicitações, cotações \", \"E-mail\") (SR-6)",
+      "fix": "start the text on the container's left, or on the one split line every split shares",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "container-edges"
+      ],
+      "wheres": [
+        "div.login > main.login-panel > div.card > div.brand \"◈ FLUXO DE COMPRAS\""
+      ]
+    },
+    {
+      "check": "container-edges",
+      "where": "div.login > main.login-panel > div.card > h1 \"Entrar no Fluxo\"",
+      "msg": "the h1 starts 860px right of the container's left: every h1 and h2 starts on it, 2px either way (SR-6)",
+      "fix": "start the text on the container's left, or on the one split line every split shares",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "container-edges"
+      ],
+      "wheres": [
+        "div.login > main.login-panel > div.card > h1 \"Entrar no Fluxo\""
+      ]
+    }
+  ],
+  "waived": [
+    {
+      "check": "copy-headline",
+      "where": "div.login > main.login-panel > div.card > h1 \"Entrar no Fluxo\"",
+      "msg": "\"Entrar no Fluxo\" does not name what is sold (gestao de compras, gestao, compras, from flags)",
+      "fix": "put the category noun in the h1 (and who it is for, or where), in 2 to 8 words",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "copy-headline"
+      ],
+      "wheres": [
+        "div.login > main.login-panel > div.card > h1 \"Entrar no Fluxo\""
+      ],
+      "reason": "This is a sign-in form for an existing purchasing app; the heading names the user's task rather than selling a category."
+    },
+    {
+      "check": "moment-none",
+      "where": "(the page)",
+      "msg": "a software page (--type) deals no moment: every kind carries one, two on a long page (moments.md)",
+      "fix": "deal one (moments.mjs pick --page software) and mount it in its own section",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "moment-none"
+      ],
+      "wheres": [
+        "(the page)"
+      ],
+      "reason": "A scroll-driven marketing moment would interrupt sign-in and recurring purchasing tasks; the application uses only control feedback."
+    },
+    {
+      "check": "container-edges",
+      "where": "div#root \"◈ FLUXO DE COMPRASDa solicitação à decis\"",
+      "msg": "a <div> at the top of the page, outside header.nav, main, footer.closing and nav.actionbar (SR-6)",
+      "fix": "build the page as header.nav, a main of sections (each one in-flow .wrap plus background layers) and footer.closing",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "container-edges"
+      ],
+      "wheres": [
+        "div#root \"◈ FLUXO DE COMPRASDa solicitação à decis\""
+      ],
+      "reason": "The root is the existing React mount point. Replacing it with the marketing header/main/footer contract would not improve the application."
+    },
+    {
+      "check": "text-only",
+      "where": "div#root > div.login > main.login-panel > div.card \"Entrar no Fluxo\"",
+      "msg": "the closing section is only text: no picture, icon, mock or effect in it",
+      "fix": "give the section a visual: a photograph that fits, the real icons, or a UI fragment on a ground",
+      "widths": [
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "text-only"
+      ],
+      "wheres": [
+        "div#root > div.login > main.login-panel > div.card \"Entrar no Fluxo\""
+      ],
+      "reason": "This is the real authentication form, not a closing marketing section. Adding unrelated images would displace the controls."
+    },
+    {
+      "check": "container",
+      "where": "page",
+      "msg": "no .wrap",
+      "fix": "put the content in one .wrap",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "layout",
+      "ids": [
+        "container"
+      ],
+      "wheres": [
+        "page"
+      ],
+      "reason": "The existing React app uses its login and content grids, not the marketing kit's wrap class. Equal operational margins are checked visually."
+    }
+  ],
+  "warnCount": 7
+}
