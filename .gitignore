@@ -7,3 +7,5 @@ coverage.lcov
 
 # Local design checks and browser profiles
 .taste-skill/
+test-results/
+playwright-report/
