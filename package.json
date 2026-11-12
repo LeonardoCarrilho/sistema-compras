@@ -11,6 +11,7 @@
     "test:integration": "node scripts/integration.mjs",
     "lint": "biome lint --only=correctness/noUnreachable server web scripts",
     "test:e2e": "node tests/browser.mjs",
+    "test:ui": "playwright test --config=playwright.ui.config.js",
     "test:coverage": "node --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=coverage.lcov server/*.test.js"
   },
   "dependencies": {

@@ -4,3 +4,6 @@ dist/
 
 coverage.lcov
 *.log
+
+# Local design checks and browser profiles
+.taste-skill/
