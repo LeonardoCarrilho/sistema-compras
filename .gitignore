@@ -1,3 +1,11 @@
 node_modules/
 dist/
 .env
+
+coverage.lcov
+*.log
+
+# Local design checks and browser profiles
+.taste-skill/
+test-results/
+playwright-report/

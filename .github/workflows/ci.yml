@@ -1,0 +1,49 @@
+name: Verificações
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: example
+          MYSQL_DATABASE: compras
+        ports: ["3306:3306"]
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost -pexample"
+          --health-interval=10s --health-timeout=5s --health-retries=12
+    env:
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: example
+      DB_NAME: compras
+      JWT_SECRET: ci-somente-teste-segredo-longo
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm audit --audit-level=moderate
+      - run: npm run lint
+      - run: npm test
+      - run: npm run test:coverage
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cobertura-unitaria
+          path: coverage.lcov
+      - run: npm run build
+      - run: mysql -h 127.0.0.1 -u root -pexample compras < server/schema.sql
+      - run: npm run seed
+      - run: node server/index.js > /tmp/compras-api.log 2>&1 &
+      - run: for i in {1..30}; do curl -s http://127.0.0.1:3000/api/me && break || sleep 1; done
+      - run: npm run test:integration
+      - run: npx playwright install --with-deps chromium
+      - run: npx vite --host 127.0.0.1 > /tmp/compras-web.log 2>&1 &
+      - run: for i in {1..30}; do curl -sf http://127.0.0.1:5173/ > /dev/null && break || sleep 1; done
+      - run: npm run test:e2e
